@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example</title>
+</head>
+
+<body>
+    <p>example</p>
+    <script src="../release/bundle.js"></script>
+    <script>
+        var EC = window.EasyCache;
+        var cache = new EC();
+        cache.set("a", 100);
+        alert(cache.get("a"));
+    </script>
+
+</body>
+
+</html>
