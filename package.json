@@ -1,37 +1,21 @@
 {
-  "name": "easy-cache-npm",
-  "version": "0.0.2",
-  "description": "轻量易用的前端缓存工具，防止内存泄漏",
-  "main": "src/index.js",
+  "name": "crowller-ts-node-react",
+  "version": "0.0.1",
+  "description": "React+Node+TS 实现简单的爬虫应用",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "release": "webpack",
-    "example": "http-server -p 8880"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ANT-CYJ/easy-cache.git"
+    "url": "git+https://github.com/ANT-CYJ/Crowller-TS-Node-React.git"
   },
   "keywords": [
-    "cache"
+    "crowller"
   ],
-  "author": "https://github.com/ANT-CYJ",
+  "author": "Neo",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ANT-CYJ/easy-cache/issues"
+    "url": "https://github.com/ANT-CYJ/Crowller-TS-Node-React/issues"
   },
-  "homepage": "https://github.com/ANT-CYJ/easy-cache#readme",
-  "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-latest": "^6.24.1",
-    "bable-loader": "0.0.1-security",
-    "webpack": "^5.10.1",
-    "webpack-cli": "^4.2.0"
-  },
-  "dependencies": {
-    "user": "0.0.0"
-  }
+  "homepage": "https://github.com/ANT-CYJ/Crowller-TS-Node-React#readme"
 }
