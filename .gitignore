@@ -105,4 +105,5 @@ dist
 
 .DS_Store
 
+#gitbook生成的_book目录
 _book
