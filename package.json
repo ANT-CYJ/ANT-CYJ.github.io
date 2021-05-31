@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Neo 的技术博客",
   "scripts": {
-    "getbook": "gitbook init && gitbook build"
+    "getbook": "gitbook init && gitbook build && cp -r _book/ ../ANT-CYJ.github.io"
   },
   "repository": {
     "type": "git",
