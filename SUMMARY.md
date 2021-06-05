@@ -19,4 +19,4 @@
   -- [我的手写工具](doc/tools/tools2.md)
 - [敏捷开发](doc/agile/README.md)
   -- [敏捷团队](doc/agile/agile1.md)
-  -- [工具与技术](doc/agile/agile2.md)
+  - [工具与技术](doc/agile/agile2.md)
