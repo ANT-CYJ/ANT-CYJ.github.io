@@ -14,7 +14,7 @@
 - [算法刷题](doc/algorithm/README.md)
   - [经典收录](doc/algorithm/algorithm1.md)
   - [我的手写算法](doc/algorithm/algorithm2.md)
-- [工具合集](doc/tools/README.md）
+- [工具合集](doc/tools/README.md)
   - [经典收录](doc/tools/tools1.md)
   - [我的手写工具](doc/tools/tools2.md)
 - [敏捷开发](doc/agile/README.md)
