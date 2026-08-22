@@ -8,15 +8,15 @@
 
 ## ⭐ 当前资源(按推荐度排序)
 
-### 🥇 Harness Engineering 系列(2026-08-22 刚发,优先级最高)
+### 🥇 Harness Engineering 系列 — ✅ 已发(2026-08-22)
 
-| 平台 | 资源 | 推荐度 | 备注 |
+| 平台 | 资源 | 推荐度 | 状态 |
 |---|---|---|---|
-| **B 站专栏** | `bilibili/harness-engineering-1.md`(3.7KB) | ★★★ | 概念 + 公式 + 演进,直接搬博客 |
-| **B 站专栏** | `bilibili/harness-engineering-2.md`(4.7KB) | ★★★ | 实战 + 个人最小方案,直接搬博客 |
-| **微信公众号** | `wechat/harness-engineering.md`(450 字) | ★★★ | 两篇合并精华,加金句 + 行动召唤 |
+| **B 站专栏** | `bilibili/harness-engineering-1.md`(3.7KB) | ★★★ | ✅ **已发** |
+| **B 站专栏** | `bilibili/harness-engineering-2.md`(4.7KB) | ★★★ | ✅ **已发** |
+| **微信公众号** | `wechat/harness-engineering.md`(450 字) | ★★★ | ✅ **已发** |
 
-**Harness 是当前最值得发跨平台的内容** — 5 视频消化 + 2 大厂实战 + 量化证据,体量最大、原创度最高、跟现有跨平台内容无重叠。
+**Harness 是当前最值得发跨平台的内容** — 5 视频消化 + 2 大厂实战 + 量化证据,体量最大、原创度最高。**3 篇已全部发出(W35 完成)。**
 
 ### ★★ AI 协作必知 4 件事(2026-08-22 已发博客)
 
@@ -112,4 +112,9 @@
 - Neo 决定:封面图自己用豆包/元宝生成(免费),Mavis 不再自动生成
 - 资源池维持 4 + 3 = 7 篇状态
 - 等待 Neo 手动发布
+- 关联 commit:本次更新
+
+### 2026-08-22 (3) — 发布进度
+- ✅ **已发 3 篇**:B站长文 `harness-1/2` + 微信 `harness-engineering`
+- ⏳ **待发 4 篇**:B站长文 `ai-collaboration` `hermes` + 微信 `ai-collaboration` `hermes`
 - 关联 commit:本次更新

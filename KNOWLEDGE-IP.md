@@ -225,7 +225,7 @@
 
 | 周 | 状态 | 完成项 | 卡住项 | 下周重点 |
 |---|---|---|---|---|
-| W35 (8/25 起) | 🟡 账号已有,待发长文 | 账号 ✅(B站+微信已有) | 还没发 | 发 `ai-collaboration-4-things` 到 B 站长文 + 公众号 |
+| W35 (8/25 起) | 🟢 已发 3 篇 | B站长文 `harness-engineering-1/2` ✅ + 微信 `harness-engineering` ✅ | 封面图(Neo 自用豆包/元宝) | 发 `ai-collaboration` + `hermes` 到 B站/微信 |
 
 ---
 
