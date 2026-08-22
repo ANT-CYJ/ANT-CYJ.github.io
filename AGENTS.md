@@ -93,6 +93,7 @@ git add . && git commit -m "..." && git push origin main
 4. 跑 `npm run dev` 检查本地是否能起来(dev server 已在 `bg_e6290338` 跑的话,先确认状态)
 5. 问 Neo:"今天从哪开始?" — 给 2-3 个候选(候选可以引用 `.cache/daily-candidates.md` 里的 ★)
 6. **问 Neo:"今天推进 IP 吗?有 5-10 分钟吗?"**(按 `KNOWLEDGE-IP.md` §5)— 有时间 → 给当日微动作;没时间 → 跳过,不催
+7. **检查 `.to-publish/README.md`**(跨平台资源池)— 如果有 ★★★ 新增,**主动告知** Neo:"X 篇博客的 B 站长文 + 公众号短文已准备好"
 
 ## 注意事项
 
