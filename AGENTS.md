@@ -71,7 +71,7 @@ git add . && git commit -m "..." && git push origin main
   3. `/blog/hermes-wechat-integration` — Hermes 微信集成实战
 - ✅ 远程 main:`b48ed5c` (HEAD),持续更新
 - ✅ 工作流沉淀到 LEARNING-JOURNAL(commit `81b76eb`)
-- ✅ 博客维护机制上线:`BLOG-MAINTENANCE.md`(4 条核心规则 + 触发场景详细版 + 扫描规则)
+- ✅ 博客维护机制上线:`BLOG-MAINTENANCE.md`(4 条核心规则 + 触发场景详细版 + 扫描规则 + 跨平台分发 §6)
 
 ## 接下来候选(按优先级)
 
