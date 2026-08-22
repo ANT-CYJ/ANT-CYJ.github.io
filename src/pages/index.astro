@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 5);
+---
+
+<BaseLayout title="Neo" description="Neo 的技术博客:AI、工具、想法">
+  <section class="hero">
+    <h1>Neo 的技术博客</h1>
+    <p>记录用 AI 做产品的过程,沉淀可复用的心智模型与工具经验。</p>
+    <div class="hero-links">
+      <a href="/blog">阅读博客</a>
+      <a href="/about">关于我</a>
+      <a href="https://github.com/ANT-CYJ">GitHub</a>
+    </div>
+  </section>
+
+  <h2>最新文章</h2>
+  <ul class="post-list">
+    {posts.map((post) => (
+      <li>
+        <article class="post-card">
+          <h3><a href={`/blog/${post.id}`}>{post.data.title}</a></h3>
+          <time datetime={post.data.pubDate.toISOString()}>
+            {post.data.pubDate.toISOString().slice(0, 10)}
+          </time>
+          <p class="desc">{post.data.description}</p>
+          {post.data.tags.length > 0 && (
+            <div class="tags">
+              {post.data.tags.map((tag) => <span class="tag">#{tag}</span>)}
+            </div>
+          )}
+        </article>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>

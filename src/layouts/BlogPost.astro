@@ -1,0 +1,36 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  tags: string[];
+}
+
+const { title, description, pubDate, updatedDate, tags } = Astro.props;
+const dateStr = pubDate.toISOString().slice(0, 10);
+const updatedStr = updatedDate?.toISOString().slice(0, 10);
+---
+
+<BaseLayout title={title} description={description}>
+  <article>
+    <header class="post-header">
+      <h1>{title}</h1>
+      <div class="post-meta">
+        <time datetime={pubDate.toISOString()}>{dateStr}</time>
+        {updatedStr && <span>· 更新于 {updatedStr}</span>}
+        {tags.length > 0 && (
+          <span>
+            {tags.map((tag) => <span class="tag">#{tag}</span>)}
+          </span>
+        )}
+      </div>
+    </header>
+    <div class="post-content">
+      <slot />
+    </div>
+  </article>
+  <a href="/blog" class="back-link">← 回到列表</a>
+</BaseLayout>
