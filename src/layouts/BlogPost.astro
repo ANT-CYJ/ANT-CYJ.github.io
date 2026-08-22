@@ -4,6 +4,8 @@ import ShareButtons from '../components/ShareButtons.astro';
 import Comments from '../components/Comments.astro';
 import CodeBlockEnhance from '../components/CodeBlockEnhance.astro';
 import ReadingTime from '../components/ReadingTime.astro';
+import LikeButton from '../components/LikeButton.astro';
+import BookmarkButton from '../components/BookmarkButton.astro';
 import { getEntry } from 'astro:content';
 
 interface Props {
@@ -12,14 +14,13 @@ interface Props {
   pubDate: Date;
   updatedDate?: Date;
   tags: string[];
-  postId: string;  // 必传,用来读全文算阅读时长
+  postId: string;
 }
 
 const { title, description, pubDate, updatedDate, tags, postId } = Astro.props;
 const dateStr = pubDate.toISOString().slice(0, 10);
 const updatedStr = updatedDate?.toISOString().slice(0, 10);
 
-// 拿文章正文(算阅读时长 + 给分享按钮用 URL)
 const post = await getEntry('blog', postId);
 const content = post?.body || '';
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://ant-cyj.github.io';
@@ -55,6 +56,12 @@ const fullUrl = `${siteUrl}/blog/${postId}/`;
 
     <ShareButtons url={fullUrl} title={title} />
 
+    <div class="post-actions">
+      <LikeButton postId={postId} />
+      <BookmarkButton postId={postId} />
+      <p class="local-note">💡 点赞 / 收藏数据存在你的浏览器(本地),跨设备不共享</p>
+    </div>
+
     <Comments />
 
     <a href="/blog" class="back-link">← 回到列表</a>
@@ -76,5 +83,23 @@ const fullUrl = `${siteUrl}/blog/${postId}/`;
     background: var(--bg-elevated);
     border-color: var(--accent);
     color: var(--accent);
+  }
+
+  .post-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin: 1.5rem 0 2rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .post-actions .local-note {
+    margin: 0;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    flex: 1 1 100%;
   }
 </style>

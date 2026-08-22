@@ -498,6 +498,7 @@ main {
   color: var(--text-muted);
   opacity: 0;
   transition: opacity 0.2s;
+  pointer-events: none;  /* 关键:伪元素不拦截点击 */
 }
 
 .post-card:hover {
@@ -517,13 +518,26 @@ main {
   font-weight: 600;
 }
 
-.post-card a {
+/* 整个卡片可点击的链接(覆盖 h3+time+desc) */
+.post-card-link {
+  display: block;
   color: var(--text);
+  text-decoration: none;
 }
 
-.post-card a:hover {
+.post-card-link:hover {
   color: var(--accent);
   text-decoration: none;
+}
+
+.post-card-link h3 {
+  color: inherit;
+}
+
+/* tags 链接需要 z-index 在卡片 overlay 之上,仍可点 */
+.post-card .tags {
+  position: relative;
+  z-index: 1;
 }
 
 .post-card time {

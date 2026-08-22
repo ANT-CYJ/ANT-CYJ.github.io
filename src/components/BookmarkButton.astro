@@ -1,0 +1,90 @@
+---
+/**
+ * 收藏按钮(纯前端,localStorage 存状态)
+ * - 跨设备不同步
+ * - 提供"查看我的收藏"按钮(全站通用 /bookmarks/)
+ */
+interface Props {
+  postId: string;
+}
+const { postId } = Astro.props;
+---
+
+<button
+  type="button"
+  class="bookmark-btn"
+  data-post-id={postId}
+  data-action="bookmark"
+  aria-label="收藏"
+  title="收藏(本地存储)"
+>
+  <span class="bookmark-icon" aria-hidden="true">☆</span>
+  <span>收藏</span>
+</button>
+
+<script>
+  (function () {
+    document.querySelectorAll<HTMLButtonElement>('.bookmark-btn').forEach((btn) => {
+      const postId = btn.dataset.postId!;
+      const stateKey = `neo-bookmark-${postId}`;
+      const indexKey = 'neo-bookmarks-index';
+      const iconEl = btn.querySelector<HTMLElement>('.bookmark-icon');
+
+      // 读取状态
+      const saved = localStorage.getItem(stateKey) === '1';
+      btn.classList.toggle('active', saved);
+      if (iconEl) iconEl.textContent = saved ? '★' : '☆';
+
+      btn.addEventListener('click', () => {
+        const isActive = btn.classList.toggle('active');
+        if (iconEl) iconEl.textContent = isActive ? '★' : '☆';
+        localStorage.setItem(stateKey, isActive ? '1' : '0');
+
+        // 维护一个收藏索引(用于"我的收藏"页)
+        try {
+          const raw = localStorage.getItem(indexKey);
+          const arr: string[] = raw ? JSON.parse(raw) : [];
+          const set = new Set(arr);
+          if (isActive) {
+            set.add(postId);
+          } else {
+            set.delete(postId);
+          }
+          localStorage.setItem(indexKey, JSON.stringify([...set]));
+        } catch (e) {
+          // 静默
+        }
+      });
+    });
+  })();
+</script>
+
+<style>
+  .bookmark-btn {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    color: var(--text-soft);
+    padding: 0.4rem 0.9rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    transition: all 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+  }
+  .bookmark-btn:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  .bookmark-btn.active {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 8%, var(--bg-soft));
+  }
+  .bookmark-icon {
+    font-size: 1.1em;
+    line-height: 1;
+  }
+</style>

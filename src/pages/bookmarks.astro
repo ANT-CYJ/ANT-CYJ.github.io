@@ -1,0 +1,122 @@
+---
+/**
+ * "我的收藏" 页面
+ * - 纯客户端,从 localStorage 读 neo-bookmarks-index
+ * - 跨设备不同步
+ * - 用户没收藏时显示空状态
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+const postMap = new Map(allPosts.map((p) => [p.id, p]));
+---
+
+<BaseLayout title="我的收藏" description="你在 Neo 博客收藏的文章">
+  <p class="page-prompt">cat ~/.local/share/bookmarks.json</p>
+  <h1>// bookmarks</h1>
+  <p style="color: var(--text-soft); margin-bottom: 1.5rem;">
+    收藏数据存在你的浏览器 localStorage,跨设备不共享。
+  </p>
+
+  <div id="bookmarks-empty" class="empty-state" style="display: none;">
+    <p>📭 还没有收藏任何文章</p>
+    <p style="margin-top: 0.5rem; font-size: 0.9rem;">回到 <a href="/blog">博客列表</a>,点文章底部的 ☆ 收藏按钮</p>
+  </div>
+
+  <div id="bookmarks-list" class="post-list">
+    <!-- JS 动态填充 -->
+  </div>
+
+  <p style="margin-top: 2rem; font-size: 0.85rem; color: var(--text-muted); font-family: var(--font-mono);">
+    💡 提示:在文章页底部可以再次点 ★ 取消收藏
+  </p>
+</BaseLayout>
+
+<script define:vars={{ postMapData: Array.from(postMap.entries()).map(([id, post]) => ({
+  id,
+  title: post.data.title,
+  description: post.data.description,
+  pubDate: post.data.pubDate.toISOString().slice(0, 10),
+  tags: post.data.tags,
+})) }}>
+  // 把 postMap 注入到客户端
+  window.__POST_MAP__ = postMapData;
+
+  (function () {
+    const list = document.getElementById('bookmarks-list');
+    const empty = document.getElementById('bookmarks-empty');
+    if (!list || !empty) return;
+
+    const raw = localStorage.getItem('neo-bookmarks-index');
+    let ids: string[] = [];
+    try {
+      ids = raw ? JSON.parse(raw) : [];
+    } catch (e) {}
+
+    if (!ids.length) {
+      empty.style.display = 'block';
+      list.style.display = 'none';
+      return;
+    }
+
+    empty.style.display = 'none';
+    list.style.display = 'block';
+
+    const map = new Map((window.__POST_MAP__ as Array<[string, any]>).map(([k, v]) => [k, v]));
+
+    list.innerHTML = ids
+      .map((id) => {
+        const p = map.get(id);
+        if (!p) return '';
+        const tags = (p.tags || []).map((t: string) =>
+          `<a href="/tags/${encodeURIComponent(t)}" class="tag">#${t}</a>`
+        ).join('');
+        return `<li>
+          <article class="post-card">
+            <a href="/blog/${p.id}" class="post-card-link">
+              <h3>${escapeHtml(p.title)}</h3>
+              <time>${p.pubDate}</time>
+              <p class="desc">${escapeHtml(p.description || '')}</p>
+            </a>
+            ${tags ? `<div class="tags">${tags}</div>` : ''}
+          </article>
+        </li>`;
+      })
+      .join('');
+
+    function escapeHtml(s: string): string {
+      return s
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+  })();
+</script>
+
+<style>
+  .page-prompt {
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+  }
+  .page-prompt::before {
+    content: "neo@blog:~$ ";
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    border: 1px dashed var(--border);
+    border-radius: var(--radius);
+    color: var(--text-soft);
+    font-family: var(--font-mono);
+  }
+  .empty-state p {
+    margin: 0.4em 0;
+  }
+</style>
