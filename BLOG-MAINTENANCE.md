@@ -13,6 +13,7 @@
 |---|---|
 | `AGENTS.md` | 项目身份 / 技术栈 / 部署 / 用户偏好 |
 | `BLOG-MAINTENANCE.md`(本文件) | 博客对外输出的运行规则 |
+| `KNOWLEDGE-IP.md` | 知识 IP 战略(架构 / 内容方向 / 推进计划) |
 | `C:\Users\王永芳\.minimax\notes\LEARNING-JOURNAL.md` | 跨项目笔记(私有) |
 | `.cache/daily-candidates.md` | 每次新会话 vault 扫描结果(git 忽略) |
 

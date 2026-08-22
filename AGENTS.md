@@ -52,6 +52,7 @@ git add . && git commit -m "..." && git push origin main
 ## 触发场景(主动提醒)
 
 > 📌 **详细规则和工作流见 [`BLOG-MAINTENANCE.md`](./BLOG-MAINTENANCE.md)**,本节只是速查。机制本身有任何调整,先改 `BLOG-MAINTENANCE.md`。
+> 📌 **IP 战略和周计划见 [`KNOWLEDGE-IP.md`](./KNOWLEDGE-IP.md)**,新会话开头按 §5 询问 Neo 是否推进。
 
 | 触发点 | 提醒内容 |
 |---|---|
@@ -90,6 +91,7 @@ git add . && git commit -m "..." && git push origin main
 3. 跑 `git log --oneline -5` 看最近 commit
 4. 跑 `npm run dev` 检查本地是否能起来(dev server 已在 `bg_e6290338` 跑的话,先确认状态)
 5. 问 Neo:"今天从哪开始?" — 给 2-3 个候选(候选可以引用 `.cache/daily-candidates.md` 里的 ★)
+6. **问 Neo:"今天推进 IP 吗?有 5-10 分钟吗?"**(按 `KNOWLEDGE-IP.md` §5)— 有时间 → 给当日微动作;没时间 → 跳过,不催
 
 ## 注意事项
 
