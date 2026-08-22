@@ -51,6 +51,8 @@ git add . && git commit -m "..." && git push origin main
 
 ## 触发场景(主动提醒)
 
+> 📌 **详细规则和工作流见 [`BLOG-MAINTENANCE.md`](./BLOG-MAINTENANCE.md)**,本节只是速查。机制本身有任何调整,先改 `BLOG-MAINTENANCE.md`。
+
 | 触发点 | 提醒内容 |
 |---|---|
 | 用户说"扫 vault" | 立刻跑扫描 + 列候选 |
@@ -67,8 +69,9 @@ git add . && git commit -m "..." && git push origin main
   1. `/blog/welcome` — 欢迎 + 重启理由
   2. `/blog/ai-collaboration-4-things` — AI 协作必知 4 件事
   3. `/blog/hermes-wechat-integration` — Hermes 微信集成实战
-- ✅ 远程 main:`9f9f0f1` 起,持续更新
+- ✅ 远程 main:`b48ed5c` (HEAD),持续更新
 - ✅ 工作流沉淀到 LEARNING-JOURNAL(commit `81b76eb`)
+- ✅ 博客维护机制上线:`BLOG-MAINTENANCE.md`(4 条核心规则 + 触发场景详细版 + 扫描规则)
 
 ## 接下来候选(按优先级)
 
@@ -81,10 +84,12 @@ git add . && git commit -m "..." && git push origin main
 
 ## 快速自检清单(新会话开头)
 
+0. **跑 vault 扫描**:`Get-ChildItem '<vault 路径>' -Recurse -Filter *.md | Where-Object { $_.Length -gt 1KB -and ... }`(详细规则见 `BLOG-MAINTENANCE.md` §1.2),结果写到 `.cache/daily-candidates.md`,**给 Neo 一份"今日候选"摘要**
 1. 读这份 `AGENTS.md` ✓(你正在读)
-2. 跑 `git log --oneline -5` 看最近 commit
-3. 跑 `npm run dev` 检查本地是否能起来(dev server 已在 `bg_e6290338` 跑的话,先确认状态)
-4. 问 Neo:"今天从哪开始?" — 给 2-3 个候选
+2. 读 `BLOG-MAINTENANCE.md` ✓(博客维护规则,跟 AGENTS.md 同等优先)
+3. 跑 `git log --oneline -5` 看最近 commit
+4. 跑 `npm run dev` 检查本地是否能起来(dev server 已在 `bg_e6290338` 跑的话,先确认状态)
+5. 问 Neo:"今天从哪开始?" — 给 2-3 个候选(候选可以引用 `.cache/daily-candidates.md` 里的 ★)
 
 ## 注意事项
 
