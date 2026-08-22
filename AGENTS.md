@@ -32,8 +32,8 @@ git add . && git commit -m "..." && git push origin main
 
 ## 核心工作流:Vault → Blog
 
-**素材源 Obsidian vault**(默认扫这个):
-- ✅ `C:\Users\王永芳\Desktop\Vibe_coding\Code Project\Outline-output` — 通用 AI 知识
+**素材源 Obsidian vault**(Neo 的 LLM Wiki V2 vault,2026-07-13 建):
+- ✅ `C:\MyObsidianWiki\MyObsidianWiki\` — 扫范围**仅限** `wiki/{concepts,entities,sources,syntheses}/` 4 个子目录
 - ❌ `C:\Users\王永芳\Desktop\电商平台@查漏补缺&优化建议\华麦医械超市项目跟进\LLM知识库` — 商业敏感,默认不读(除非 Neo 明确说"这篇可以发")
 
 **扫描规则**:
@@ -73,6 +73,7 @@ git add . && git commit -m "..." && git push origin main
 - ✅ 远程 main:`b48ed5c` (HEAD),持续更新
 - ✅ 工作流沉淀到 LEARNING-JOURNAL(commit `81b76eb`)
 - ✅ 博客维护机制上线:`BLOG-MAINTENANCE.md`(4 条核心规则 + 触发场景详细版 + 扫描规则 + 跨平台分发 §6)
+- ✅ **扫描路径修正**:从错的 `Outline-output` 改成 `C:\MyObsidianWiki\MyObsidianWiki\`(Neo 实际 LLM Wiki V2 vault),扫描范围限定 `wiki/{concepts,entities,sources,syntheses}/` 4 个子目录
 
 ## 接下来候选(按优先级)
 

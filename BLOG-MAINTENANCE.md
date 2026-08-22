@@ -39,16 +39,27 @@
 
 - **触发**:每次新会话开头(在 `AGENTS.md` 快速自检清单第 0 步)
 - **频率**:**每次新会话** 至少 1 次(用户选了伪自动方案,不上 cron)
-- **范围**:默认扫 ✅ 这个 vault:
-  - `C:\Users\王永芳\Desktop\Vibe_coding\Code Project\Outline-output`
-- **绝对不扫** ❌(除非 Neo 明确说"这篇可以发"):
+- **vault 路径**:`C:\MyObsidianWiki\MyObsidianWiki\`(Neo 的 LLM Wiki V2 vault,2026-07-13 建)
+- **扫描范围**:**仅扫 `wiki/` 下 4 个子目录**(`concepts/` `entities/` `sources/` `syntheses/`) — 这些是 LLM 消化后的内容,博客素材来源
+- **绝对不扫**(原始素材,留给 LLM 消化):
+  - `raw/`(Neo 手动放入的原始资料,只读)
+  - `Clippings/`(Web Clipper 剪藏区)
+  - `goodvideos/`(优质视频笔记)
+  - `templates/`(页面模板)
+  - `Attachments/`(Obsidian 附件)
+  - `OneDrive/`(同步目录,Neo 说不用管)
+  - `.obsidian/` `.claude/` `.claudian/` `.agents/`(配置/插件)
+  - `wiki/.archive/`(已归档)
+  - `wiki/` 根目录(导航 + Neo 的工作输出:index/log/00-overview/review-queue/google-ai-learning-path/hermes-usage-guide/医疗器械B2B电商知识库-构建指令)
+- **客户 vault 红线**(永远不扫):
   - `C:\Users\王永芳\Desktop\电商平台@查漏补缺&优化建议\华麦医械超市项目跟进\LLM知识库`
 
 #### 排除规则
 
 - 文件 < 1KB(占位文件)
-- 目录:`inbox/` `raw/` `.obsidian/` `.claude/` `Templates/`
+- 目录:见上面"绝对不扫"列表
 - 标题匹配:`MOC` `README` `Home` 等导航页
+- 客户 vault 文件:命中 `医疗器械` `华麦` `医械` 等关键词的文件**永远跳过**
 
 #### 质量评估(每条 0-3 分)
 
@@ -60,6 +71,15 @@
 | 时效性 | 近期/未过时 | 半年内 | 已过时 |
 | 重复度 | 跟现有博客无重叠 | 主题接近 | 已发过 |
 
+#### 已输出识别
+
+- 现有博客(以 `src/content/blog/` 下的 frontmatter 为准):
+  - `welcome` — meta
+  - `ai-collaboration-4-things` — AI 协作
+  - `hermes-wechat-integration` — Hermes 微信集成
+- 跟 `wiki/entities/hermes-agent.md` 主题重叠(已发)
+- 任何标题/描述与现有博客高度相似的 wiki 页面标 [已发]
+
 #### 报告输出
 
 写到 `.cache/daily-candidates.md`(git 忽略),格式:
@@ -69,7 +89,7 @@
 扫了 X 个文件,过滤剩 Y 个,候选 Z 条。
 
 ## ★ 强烈推荐(总分 ≥ 12)
-1. **<文件名>** [未发] — <标题>
+1. **<路径>** [未发] — <title>(frontmatter)
    - 摘要(50-100 字):...
    - 评分:原创 3 / 可读 3 / 脱敏 3 / 时效 3 / 重复 3
    - 建议博客标题:...
@@ -79,7 +99,7 @@
 1. ...
 
 ## ✗ 跳过(总分 < 8 或命中排除)
-1. <文件名> — 跳过原因:[涉密] / [已发] / [占位] / [过时]
+1. <路径> — 跳过原因:[涉密] / [已发] / [占位] / [过时]
 ```
 
 ---
@@ -323,3 +343,15 @@ tags: ['标签1', '标签2']   # 默认空数组也行
 - §6.5 W35 计划从"开账号"改为"发 1 篇长文(零成本启动)"
 - §6.6 红线补充:"B 站长文可直接搬运博客 markdown"
 - 关联 commit:本文档第三次提交
+
+### 2026-08-22 (4)
+- **重大修正**:之前扫描路径 `Outline-output` 是错的 vault(那个是消化后输出的某个展示版)
+- **正确路径**:`C:\MyObsidianWiki\MyObsidianWiki\`(Neo 的 LLM Wiki V2 vault,2026-07-13 建)
+- **扫描范围调整**:
+  - ✅ 扫 `wiki/{concepts,entities,sources,syntheses}/` 4 个子目录(LLM 消化后的内容)
+  - ❌ 不扫 `raw/` `Clippings/` `goodvideos/` `templates/` `Attachments/` `OneDrive/` `.obsidian/` `.claude/` `.claudian/` `.agents/` `wiki/.archive/` `wiki/` 根目录
+- **客户 vault 关键词检查**:`医疗器械` `华麦` `医械` 等命中**永远跳过**
+- **核心洞察**:博客素材应该来自 `wiki/`(消化后内容),**不**来自 `raw/` `Clippings/` `goodvideos/`(原始素材)
+- §1.2 整个小节重写,vault 路径 + 排除规则 + 扫描范围全部更新
+- AGENTS.md 同步更新
+- 关联 commit:本文档第四次提交
