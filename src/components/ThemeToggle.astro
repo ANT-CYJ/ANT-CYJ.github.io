@@ -1,0 +1,19 @@
+---
+/**
+ * 暗色 / 亮色主题切换按钮
+ * - 客户端脚本在 BaseLayout 里统一管理
+ * - 状态存 localStorage
+ */
+---
+
+<button class="theme-toggle" id="theme-toggle" aria-label="切换主题" type="button">
+  <span class="icon-sun" aria-hidden="true">☀</span>
+  <span class="icon-moon" aria-hidden="true">☾</span>
+</button>
+
+<style>
+  .theme-toggle .icon-moon { display: none; }
+  :root.theme-dark .theme-toggle .icon-sun { display: none; }
+  :root.theme-dark .theme-toggle .icon-moon { display: inline; }
+  .theme-toggle { line-height: 1; font-size: 0.95rem; }
+</style>

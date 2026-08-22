@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  const tagMap = new Map<string, typeof posts>();
+
+  for (const post of posts) {
+    for (const tag of post.data.tags) {
+      if (!tagMap.has(tag)) tagMap.set(tag, []);
+      tagMap.get(tag)!.push(post);
+    }
+  }
+
+  return Array.from(tagMap.entries()).map(([tag, posts]) => ({
+    params: { tag },
+    props: { posts, count: posts.length },
+  }));
+}
+
+const { tag } = Astro.params;
+const { posts, count } = Astro.props;
+const sorted = posts.sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout title={`#${tag}`} description={`所有标签为 ${tag} 的文章`}>
+  <div class="tag-page">
+    <p class="tag-prompt">cd /tags && ls</p>
+    <h1 class="tag-title">
+      <span class="tag-prefix">#</span><span class="tag-name">{tag}</span>
+      <span class="tag-count">({count})</span>
+    </h1>
+
+    <ul class="post-list">
+      {sorted.map((post) => (
+        <li>
+          <article class="post-card">
+            <h3>
+              <a href={`/blog/${post.id}`}>{post.data.title}</a>
+            </h3>
+            <time datetime={post.data.pubDate.toISOString()}>
+              {post.data.pubDate.toISOString().slice(0, 10)}
+            </time>
+            <p class="desc">{post.data.description}</p>
+          </article>
+        </li>
+      ))}
+    </ul>
+
+    <a class="back-link" href="/blog/">← cd ..</a>
+  </div>
+</BaseLayout>
+
+<style>
+  .tag-prompt {
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+  }
+  .tag-prompt::before {
+    content: "neo@blog:~$ ";
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .tag-title {
+    font-family: var(--font-mono);
+    font-size: 1.8rem;
+    margin: 0 0 1.5rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5em;
+  }
+  .tag-prefix {
+    color: var(--accent);
+  }
+  .tag-count {
+    color: var(--text-muted);
+    font-size: 1rem;
+    font-weight: 400;
+  }
+</style>

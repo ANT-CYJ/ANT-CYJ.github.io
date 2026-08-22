@@ -1,0 +1,62 @@
+---
+/**
+ * 分享按钮:微博 / 微信 / 复制链接 / Twitter
+ * - 复制链接是 client-side JS
+ * - 微博/微信/Twitter 是外部链接,直接打开
+ */
+interface Props {
+  url: string;
+  title: string;
+}
+const { url, title } = Astro.props;
+const encodedUrl = encodeURIComponent(url);
+const encodedTitle = encodeURIComponent(title);
+---
+
+<div class="share-buttons">
+  <span class="share-label">share:</span>
+  <a class="share-btn" href={`https://service.weibo.com/share/share.php?url=${encodedUrl}&title=${encodedTitle}`}
+     target="_blank" rel="noopener noreferrer" data-share="weibo">
+    📱 微博
+  </a>
+  <button class="share-btn" type="button" data-share="wechat" data-url={url} data-title={title} title="微信扫一扫分享">
+    💬 微信
+  </button>
+  <a class="share-btn" href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`}
+     target="_blank" rel="noopener noreferrer" data-share="twitter">
+    🐦 Twitter
+  </a>
+  <button class="share-btn" type="button" data-share="copy" data-url={url}>
+    🔗 复制链接
+  </button>
+</div>
+
+<script>
+  document.querySelectorAll('[data-share="copy"]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const url = (btn as HTMLElement).dataset.url || window.location.href;
+      try {
+        await navigator.clipboard.writeText(url);
+        const orig = btn.innerHTML;
+        btn.classList.add('copied');
+        btn.innerHTML = '✓ 已复制';
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          btn.innerHTML = orig;
+        }, 1500);
+      } catch (e) {
+        // 兜底:prompt 弹出
+        prompt('复制失败,请手动复制:', url);
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-share="wechat"]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const url = (btn as HTMLElement).dataset.url || window.location.href;
+      // 微信扫一扫:实际是弹个二维码(简化处理,提示用户)
+      const hint = `微信扫一扫分享:\n\n1. 在电脑上打开 https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(url)} 生成二维码\n2. 微信扫一扫即可分享\n\n或直接复制链接:\n${url}`;
+      alert(hint);
+    });
+  });
+</script>

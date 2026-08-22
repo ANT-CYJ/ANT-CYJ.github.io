@@ -1,7 +1,7 @@
 ---
 title: '欢迎来到新博客'
 description: '从 GitBook 2021 老站迁到 Astro,记录重开博客的理由。'
-pubDate: 2026-08-22
+pubDate: 2026-08-01
 tags: ['meta', 'blog']
 ---
 

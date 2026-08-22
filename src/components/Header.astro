@@ -10,6 +10,7 @@ const isHome = pathname === '/' || pathname === '';
       <a href="/blog" class={pathname.startsWith('/blog') ? 'active' : ''}>Blog</a>
       <a href="/about" class={pathname === '/about' ? 'active' : ''}>About</a>
       <a href="/rss.xml" title="RSS Feed">RSS</a>
+      <slot name="extra" />
     </nav>
   </div>
 </header>

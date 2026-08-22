@@ -5,20 +5,33 @@ import { getCollection } from 'astro:content';
 const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 5);
+
+// 收集所有 tags(去重 + 计数)
+const tagCount = new Map<string, number>();
+for (const p of posts) {
+  for (const t of p.data.tags) {
+    tagCount.set(t, (tagCount.get(t) || 0) + 1);
+  }
+}
+const topTags = Array.from(tagCount.entries())
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 8);
 ---
 
 <BaseLayout title="Neo" description="Neo 的技术博客:AI、工具、想法">
   <section class="hero">
+    <p class="hero-prompt">cat ./README.md</p>
     <h1>Neo 的技术博客</h1>
     <p>记录用 AI 做产品的过程,沉淀可复用的心智模型与工具经验。</p>
     <div class="hero-links">
-      <a href="/blog">阅读博客</a>
-      <a href="/about">关于我</a>
-      <a href="https://github.com/ANT-CYJ">GitHub</a>
+      <a href="/blog">📚 阅读博客</a>
+      <a href="/about">👤 关于我</a>
+      <a href="https://github.com/ANT-CYJ">⚙️ GitHub</a>
+      <a href="/rss.xml">📡 RSS</a>
     </div>
   </section>
 
-  <h2>最新文章</h2>
+  <h2>// latest</h2>
   <ul class="post-list">
     {posts.map((post) => (
       <li>
@@ -30,11 +43,51 @@ const posts = (await getCollection('blog'))
           <p class="desc">{post.data.description}</p>
           {post.data.tags.length > 0 && (
             <div class="tags">
-              {post.data.tags.map((tag) => <span class="tag">#{tag}</span>)}
+              {post.data.tags.map((tag) => <a href={`/tags/${encodeURIComponent(tag)}`} class="tag">#{tag}</a>)}
             </div>
           )}
         </article>
       </li>
     ))}
   </ul>
+
+  {topTags.length > 0 && (
+    <section class="tag-cloud">
+      <h2>// tags</h2>
+      <div class="tags">
+        {topTags.map(([tag, count]) => (
+          <a href={`/tags/${encodeURIComponent(tag)}`} class="tag">
+            #{tag} <span class="tag-num">{count}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
 </BaseLayout>
+
+<style>
+  .tag-cloud {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .tag-cloud h2 {
+    border-top: 0;
+    padding-top: 0;
+  }
+  .tag-cloud .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .tag-cloud .tag {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+  }
+  .tag-cloud .tag-num {
+    color: var(--text-muted);
+    font-size: 0.85em;
+  }
+</style>

@@ -1,0 +1,18 @@
+---
+/**
+ * 阅读时长估算(基于字数)
+ * - 假设中文 ~300 字/分钟,英文 ~200 词/分钟
+ */
+interface Props {
+  content: string;
+}
+const { content } = Astro.props;
+
+// 中文字符数 + 英文单词数
+const cnChars = (content.match(/[\u4e00-\u9fa5]/g) || []).length;
+const enWords = (content.replace(/[\u4e00-\u9fa5]/g, ' ')
+  .match(/[a-zA-Z]+/g) || []).length;
+const minutes = Math.max(1, Math.round(cnChars / 300 + enWords / 200));
+---
+
+<span class="reading-time">~{minutes} 分钟阅读</span>

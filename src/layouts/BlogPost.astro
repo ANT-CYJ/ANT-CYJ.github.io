@@ -1,5 +1,10 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import ShareButtons from '../components/ShareButtons.astro';
+import Comments from '../components/Comments.astro';
+import CodeBlockEnhance from '../components/CodeBlockEnhance.astro';
+import ReadingTime from '../components/ReadingTime.astro';
+import { getEntry } from 'astro:content';
 
 interface Props {
   title: string;
@@ -7,30 +12,69 @@ interface Props {
   pubDate: Date;
   updatedDate?: Date;
   tags: string[];
+  postId: string;  // 必传,用来读全文算阅读时长
 }
 
-const { title, description, pubDate, updatedDate, tags } = Astro.props;
+const { title, description, pubDate, updatedDate, tags, postId } = Astro.props;
 const dateStr = pubDate.toISOString().slice(0, 10);
 const updatedStr = updatedDate?.toISOString().slice(0, 10);
+
+// 拿文章正文(算阅读时长 + 给分享按钮用 URL)
+const post = await getEntry('blog', postId);
+const content = post?.body || '';
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://ant-cyj.github.io';
+const fullUrl = `${siteUrl}/blog/${postId}/`;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout
+  title={title}
+  description={description}
+  articleDate={pubDate}
+  tags={tags}
+>
   <article>
     <header class="post-header">
       <h1>{title}</h1>
       <div class="post-meta">
         <time datetime={pubDate.toISOString()}>{dateStr}</time>
         {updatedStr && <span>· 更新于 {updatedStr}</span>}
+        <ReadingTime content={content} />
         {tags.length > 0 && (
-          <span>
-            {tags.map((tag) => <span class="tag">#{tag}</span>)}
+          <span class="post-tags">
+            {tags.map((tag) => (
+              <a href={`/tags/${encodeURIComponent(tag)}`} class="tag">#{tag}</a>
+            ))}
           </span>
         )}
       </div>
     </header>
+
     <div class="post-content">
       <slot />
     </div>
+
+    <ShareButtons url={fullUrl} title={title} />
+
+    <Comments />
+
+    <a href="/blog" class="back-link">← 回到列表</a>
   </article>
-  <a href="/blog" class="back-link">← 回到列表</a>
+
+  <CodeBlockEnhance />
 </BaseLayout>
+
+<style>
+  .post-tags {
+    display: inline-flex;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+  }
+  .post-tags .tag {
+    text-decoration: none;
+  }
+  .post-tags .tag:hover {
+    background: var(--bg-elevated);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+</style>

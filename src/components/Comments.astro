@@ -1,0 +1,61 @@
+---
+/**
+ * Giscus 评论(基于 GitHub Discussions)
+ *
+ * 配置步骤(NEO 必做):
+ * 1. 打开 GitHub 仓库 Settings → General → Features
+ *    勾选 "Discussions"
+ * 2. 第一次进 Discussions,点 Categories → New Category 创建一个
+ *    比如名字 "General",模式 Announcement / Q&A 都行
+ * 3. 仓库默认 branch 是 main, Discussions 默认也是
+ * 4. 然后这个组件就能用了
+ *
+ * 如果 Neo 还没配置,会显示"未配置"提示卡
+ */
+
+const GISCUS_CONFIG = {
+  repo: 'ANT-CYJ/ANT-CYJ.github.io' as string,
+  repoId: '' as string,  // 第一次加载 Giscus 后从 URL 里取,填这里
+  category: 'General' as string,
+  categoryId: '' as string,  // 同上
+};
+
+const isConfigured = GISCUS_CONFIG.repo && GISCUS_CONFIG.repoId;
+---
+
+<section class="comments-section" id="comments">
+  <h2>// comments</h2>
+
+  {isConfigured ? (
+    <script
+      src="https://giscus.app/client.js"
+      data-repo={GISCUS_CONFIG.repo}
+      data-repo-id={GISCUS_CONFIG.repoId}
+      data-category={GISCUS_CONFIG.category}
+      data-category-id={GISCUS_CONFIG.categoryId}
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="preferred_color_scheme"
+      data-lang="zh-CN"
+      data-loading="lazy"
+      crossorigin="anonymous"
+      async
+    />
+  ) : (
+    <div class="comments-not-configured">
+      <p>💬 <strong>评论功能待启用</strong></p>
+      <p>Giscus 基于 GitHub Discussions 加载。配置步骤:</p>
+      <ol style="margin: 0.5em 0 0.5em 1.5em; line-height: 1.8;">
+        <li>打开 GitHub 仓库 <a href={`https://github.com/${GISCUS_CONFIG.repo}/settings`}>Settings → General</a></li>
+        <li>Features 区块勾选 <strong>Discussions</strong></li>
+        <li>进 Discussions → Categories → 新建 Category(如 "General")</li>
+        <li>访问 <a href="https://giscus.app/zh-CN" target="_blank" rel="noopener">giscus.app</a> 配置你的 repo + category</li>
+        <li>把生成的 <code>repoId</code> 和 <code>categoryId</code> 填到 <code>src/components/Comments.astro</code></li>
+      </ol>
+      <p style="margin-top: 0.8em;">配置完成后这条提示会自动消失,评论会出现在这里 ✨</p>
+    </div>
+  )}
+</section>

@@ -1,0 +1,62 @@
+---
+/**
+ * 自动给 <pre><code> 代码块加:
+ * 1. 复制按钮(hover 出现)
+ * 2. 语言标签(从 className 提取)
+ * 3. 包一层 .code-block 容器
+ *
+ * 由客户端脚本执行,SSR 时不修改 DOM
+ */
+---
+
+<script>
+  (function () {
+    function enhance() {
+      document.querySelectorAll('pre > code').forEach((code) => {
+        const pre = code.parentElement as HTMLElement;
+        if (!pre || pre.dataset.enhanced) return;
+        pre.dataset.enhanced = '1';
+
+        // 1. 包装 .code-block
+        const wrapper = document.createElement('div');
+        wrapper.className = 'code-block';
+        pre.parentNode?.insertBefore(wrapper, pre);
+        wrapper.appendChild(pre);
+
+        // 2. 语言标签(从 code className 提取 language-xxx)
+        const m = code.className.match(/language-([\w-]+)/);
+        if (m) {
+          const lang = document.createElement('span');
+          lang.className = 'code-lang';
+          lang.textContent = m[1];
+          wrapper.appendChild(lang);
+        }
+
+        // 3. 复制按钮
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'code-copy';
+        btn.textContent = 'copy';
+        btn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(code.textContent || '');
+            btn.classList.add('copied');
+            btn.textContent = '✓ copied';
+            setTimeout(() => {
+              btn.classList.remove('copied');
+              btn.textContent = 'copy';
+            }, 1500);
+          } catch (e) {
+            prompt('Copy failed, manual:', code.textContent || '');
+          }
+        });
+        wrapper.appendChild(btn);
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', enhance);
+    } else {
+      enhance();
+    }
+  })();
+</script>

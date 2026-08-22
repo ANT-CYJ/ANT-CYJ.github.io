@@ -2,14 +2,28 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
 
 interface Props {
   title: string;
   description?: string;
+  ogImage?: string;
+  articleDate?: Date;
+  tags?: string[];
 }
 
-const { title, description = 'Neo 的技术博客' } = Astro.props;
+const {
+  title,
+  description = 'Neo 的技术博客',
+  ogImage = '/favicon.svg',
+  articleDate,
+  tags = [],
+} = Astro.props;
+
 const fullTitle = title === 'Neo' ? title : `${title} · Neo`;
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://ant-cyj.github.io';
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteUrl).toString();
 ---
 
 <!DOCTYPE html>
@@ -19,12 +33,69 @@ const fullTitle = title === 'Neo' ? title : `${title} · Neo`;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate" type="application/rss+xml" title="Neo's Blog" href="/rss.xml" />
+    <link rel="canonical" href={canonicalUrl} />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- 防 FOUC:页面渲染前先应用主题(避免主题切换闪烁) -->
+    <script is:inline>
+      (function () {
+        try {
+          const stored = localStorage.getItem('neo-theme');
+          const root = document.documentElement;
+          if (stored === 'dark') {
+            root.classList.add('theme-dark');
+          } else if (stored === 'light') {
+            root.classList.add('theme-light');
+          }
+          // 否则跟随 prefers-color-scheme(CSS 自动处理)
+        } catch (e) {}
+      })();
+    </script>
+
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={articleDate ? 'article' : 'website'} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:site_name" content="Neo Blog" />
+    {articleDate && <meta property="article:published_time" content={articleDate.toISOString()} />}
+    {tags.map((t) => <meta property="article:tag" content={t} />)}
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <!-- 主题切换按钮脚本(必须轻量,不阻塞渲染) -->
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', function () {
+        const btn = document.getElementById('theme-toggle');
+        if (!btn) return;
+        btn.addEventListener('click', function () {
+          const root = document.documentElement;
+          const isDark = root.classList.contains('theme-dark');
+          if (isDark) {
+            root.classList.remove('theme-dark');
+            root.classList.add('theme-light');
+            localStorage.setItem('neo-theme', 'light');
+          } else {
+            root.classList.remove('theme-light');
+            root.classList.add('theme-dark');
+            localStorage.setItem('neo-theme', 'dark');
+          }
+        });
+      });
+    </script>
   </head>
   <body>
-    <Header />
+    <Header>
+      <ThemeToggle slot="extra" />
+    </Header>
     <main>
       <div class="container">
         <slot />
