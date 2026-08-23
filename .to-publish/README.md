@@ -118,3 +118,7 @@
 - ✅ **已发 3 篇**:B站长文 `harness-1/2` + 微信 `harness-engineering`
 - ⏳ **待发 4 篇**:B站长文 `ai-collaboration` `hermes` + 微信 `ai-collaboration` `hermes`
 - 关联 commit:本次更新
+
+### 2026-08-24 — Context Engineering 系列就绪
+- ✅ **新发 1 篇**:B站长文 `context-engineering` + 微信 `context-engineering`
+- 关联 commit:本 commit
