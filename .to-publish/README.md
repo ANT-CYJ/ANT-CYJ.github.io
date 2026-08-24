@@ -41,6 +41,13 @@
 | **B 站专栏** | `bilibili/hermes-wechat-integration.md`(6KB) | ★★ | 教程类,4 步 + 5 坑 + 4 模式 |
 | **微信公众号** | `wechat/hermes.md`(400 字) | ★★ | 4 步代码 + 4 变量 + 3 真实感受 |
 
+### ★★ Obsidian 全景(2026-08-24 已发博客)
+
+| 平台 | 资源 | 推荐度 | 备注 |
+|---|---|---|---|
+| **B 站专栏** | `bilibili/obsidian-overview.md`(6.2KB) | ⭐⭐ | 工具评测类,跟 Neo 自己 vault 强相关 |
+| **微信公众号** | `wechat/obsidian-overview.md`(500 字) | ⭐⭐ | 8 个月心路 + 7 特性 + 3 条建议 |
+
 ### ⛔ 跳过
 
 - `welcome.md` — meta 类(重启理由),不适合跨平台
@@ -88,9 +95,15 @@
 
 ## ✅ 强烈推荐立即发的(★★★)
 
-> 截至 2026-08-24,**没有 ★★★ 待发资源**。Harness 和 Context Engineering 两个系列已闭环。
+> 截至 2026-08-24 14:25,**没有 ★★★ 待发资源**。Harness 和 Context Engineering 已闭环,Obsidian 全景已就绪(★★)。
 >
 > 下一篇 ★★★ 候选:扫 vault 找新的高价值笔记(产品/技术干货 + > 5KB + 能形成系列感),或等新博客上线自动生成。
+
+### ⭐ 强推下一步:Obsidian 全景(已就绪)
+
+刚 commit 的博客 + B 站/微信资源都已备好。**推荐先发**(★★ 但体感好,工具评测类是 Neo 的舒适区):
+- B 站长文 `bilibili/obsidian-overview.md` 6.2KB
+- 微信短文 `wechat/obsidian-overview.md` 2.5KB
 
 ---
 
@@ -134,3 +147,10 @@
 - 累计 W36 完成度:**博客 + B 站 + 微信 3 平台全到位**(2 篇)
 - 关联 commit:本 commit
 - **下一步**:扫 vault 找下一篇 ★★★ 候选(Kiro AI IDE 已在候选,跟 DeepSeek Harness 完美互链)
+
+### 2026-08-24 (3) — Obsidian 全景就绪
+- 🆕 **新发 1 篇博客**:`obsidian-overview` 12KB(commit `e36e693`)
+- 🆕 **资源池新增 2 篇**:B站长文 `obsidian-overview` + 微信 `obsidian-overview`
+- 累计:博客 9 篇 / B 站资源 7 篇 / 微信资源 6 篇
+- 关联 commit:本 commit
+- **下一步**:等 Neo 手动发 B 站/微信(预计 3-5 分钟/篇)
