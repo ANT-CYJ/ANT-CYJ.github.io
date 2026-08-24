@@ -18,6 +18,15 @@
 
 **Harness 是当前最值得发跨平台的内容** — 5 视频消化 + 2 大厂实战 + 量化证据,体量最大、原创度最高。**3 篇已全部发出(W35 完成)。**
 
+### 🥇 Context Engineering 系列 — ✅ 已发(2026-08-24)
+
+| 平台 | 资源 | 推荐度 | 状态 |
+|---|---|---|---|
+| **B 站专栏** | `bilibili/context-engineering.md`(4.2KB) | ⭐⭐⭐ | ✅ **已发** |
+| **微信公众号** | `wechat/context-engineering.md`(2KB) | ⭐⭐⭐ | ✅ **已发** |
+
+**补齐 AI 工程三阶的中间一环**(Prompt → Context → Harness),跟 Harness 系列互链成 IP 节奏。**2 篇已发,W36 完整闭环。**
+
 ### ★★ AI 协作必知 4 件事(2026-08-22 已发博客)
 
 | 平台 | 资源 | 推荐度 | 备注 |
@@ -79,13 +88,9 @@
 
 ## ✅ 强烈推荐立即发的(★★★)
 
-按"对 Neo 收益最大"的优先级:
-
-1. **`harness-engineering-1.md`(B 站长文)** — 体量 + 原创度最高
-2. **`harness-engineering.md`(微信公众号短文)** — 450 字最易消化
-3. **`harness-engineering-2.md`(B 站长文)** — 实战 + 个人方案
-
-发完前 3 个,你的 W35 计划就**完整闭环**(博客 + B 站 + 微信 3 平台全到位)。
+> 截至 2026-08-24,**没有 ★★★ 待发资源**。Harness 和 Context Engineering 两个系列已闭环。
+>
+> 下一篇 ★★★ 候选:扫 vault 找新的高价值笔记(产品/技术干货 + > 5KB + 能形成系列感),或等新博客上线自动生成。
 
 ---
 
@@ -122,3 +127,10 @@
 ### 2026-08-24 — Context Engineering 系列就绪
 - ✅ **新发 1 篇**:B站长文 `context-engineering` + 微信 `context-engineering`
 - 关联 commit:本 commit
+
+### 2026-08-24 (2) — Context Engineering 系列已发
+- ✅ **已发 2 篇**:B站长文 `context-engineering` + 微信 `context-engineering`(Neo 手动复制发布)
+- 博客端: `3ee8b3c feat(blog): add Context Engineering + cross-platform resources` 已 live
+- 累计 W36 完成度:**博客 + B 站 + 微信 3 平台全到位**(2 篇)
+- 关联 commit:本 commit
+- **下一步**:扫 vault 找下一篇 ★★★ 候选(Kiro AI IDE 已在候选,跟 DeepSeek Harness 完美互链)
