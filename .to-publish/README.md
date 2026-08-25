@@ -48,6 +48,15 @@
 | **B 站专栏** | `bilibili/obsidian-overview.md`(6.2KB) | ⭐⭐ | 工具评测类,跟 Neo 自己 vault 强相关 |
 | **微信公众号** | `wechat/obsidian-overview.md`(500 字) | ⭐⭐ | 8 个月心路 + 7 特性 + 3 条建议 |
 
+### ★★★ Vibe Coding 学习路线图(2026-08-25 已发博客)
+
+| 平台 | 资源 | 推荐度 | 备注 |
+|---|---|---|---|
+| **B 站专栏** | `bilibili/vibe-coding-learning-roadmap.md`(9.6KB) | ⭐⭐⭐ | Karpathy 概念 + 4 层框架 + 4 阶段路线,干货最足 |
+| **微信公众号** | `wechat/vibe-coding-learning-roadmap.md`(550 字) | ⭐⭐⭐ | 4 层框架 + 4 铁律 + 3 条建议 |
+
+**这篇是 8/25 最新博客**,跟 Context Engineering / Harness Engineering 完美互链,跟 AI 编程三阶形成系列。**W37 完成度:博客 + 资源池齐备,等 Neo 手动发。**
+
 ### ⛔ 跳过
 
 - `welcome.md` — meta 类(重启理由),不适合跨平台
@@ -154,3 +163,11 @@
 - 累计:博客 9 篇 / B 站资源 7 篇 / 微信资源 6 篇
 - 关联 commit:本 commit
 - **下一步**:等 Neo 手动发 B 站/微信(预计 3-5 分钟/篇)
+
+### 2026-08-25 — Vibe Coding 学习路线图就绪
+- 🆕 **新发 1 篇博客**:`vibe-coding-learning-roadmap` 12KB(commit `47134c2`)
+- 🆕 **资源池新增 2 篇**:B站长文 `vibe-coding` 9.6KB + 微信 `vibe-coding` 3KB
+- 累计:博客 10 篇 / B 站资源 8 篇 / 微信资源 7 篇
+- 关联 commit:本 commit
+- **下一步**:等 Neo 手动发 B 站/微信
+- **系列感**:跟 Context Engineering + Harness Engineering 形成"AI 编程三阶"完整闭环(本次新加的"实操"层)
