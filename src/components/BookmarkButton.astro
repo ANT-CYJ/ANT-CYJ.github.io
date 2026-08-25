@@ -24,11 +24,11 @@ const { postId } = Astro.props;
 
 <script>
   (function () {
-    document.querySelectorAll<HTMLButtonElement>('.bookmark-btn').forEach((btn) => {
-      const postId = btn.dataset.postId!;
+    document.querySelectorAll('.bookmark-btn').forEach((btn) => {
+      const postId = btn.dataset.postId;
       const stateKey = `neo-bookmark-${postId}`;
       const indexKey = 'neo-bookmarks-index';
-      const iconEl = btn.querySelector<HTMLElement>('.bookmark-icon');
+      const iconEl = btn.querySelector('.bookmark-icon');
 
       // 读取状态
       const saved = localStorage.getItem(stateKey) === '1';
@@ -43,7 +43,7 @@ const { postId } = Astro.props;
         // 维护一个收藏索引(用于"我的收藏"页)
         try {
           const raw = localStorage.getItem(indexKey);
-          const arr: string[] = raw ? JSON.parse(raw) : [];
+          const arr = raw ? JSON.parse(raw) : [];
           const set = new Set(arr);
           if (isActive) {
             set.add(postId);
@@ -52,7 +52,8 @@ const { postId } = Astro.props;
           }
           localStorage.setItem(indexKey, JSON.stringify([...set]));
         } catch (e) {
-          // 静默
+          // 暴露错误(诊断用)— /bookmarks 页面靠这个 index 读数据
+          console.error('[bookmark] index update failed for postId=' + postId, e);
         }
       });
     });

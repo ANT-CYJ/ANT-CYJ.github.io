@@ -40,19 +40,21 @@ const postMap = new Map(allPosts.map((p) => [p.id, p]));
   pubDate: post.data.pubDate.toISOString().slice(0, 10),
   tags: post.data.tags,
 })) }}>
-  // 把 postMap 注入到客户端
+  // 把 postMap 注入到客户端(纯 JS,不能有 TypeScript 语法,define:vars 块不过 TS 编译)
   window.__POST_MAP__ = postMapData;
 
   (function () {
-    const list = document.getElementById('bookmarks-list');
-    const empty = document.getElementById('bookmarks-empty');
+    var list = document.getElementById('bookmarks-list');
+    var empty = document.getElementById('bookmarks-empty');
     if (!list || !empty) return;
 
-    const raw = localStorage.getItem('neo-bookmarks-index');
-    let ids: string[] = [];
+    var raw = localStorage.getItem('neo-bookmarks-index');
+    var ids = [];
     try {
       ids = raw ? JSON.parse(raw) : [];
-    } catch (e) {}
+    } catch (e) {
+      console.error('[bookmarks] failed to parse neo-bookmarks-index', e);
+    }
 
     if (!ids.length) {
       empty.style.display = 'block';
@@ -63,29 +65,29 @@ const postMap = new Map(allPosts.map((p) => [p.id, p]));
     empty.style.display = 'none';
     list.style.display = 'block';
 
-    const map = new Map((window.__POST_MAP__ as Array<[string, any]>).map(([k, v]) => [k, v]));
+    var map = new Map(window.__POST_MAP__.map(function (kv) { return [kv[0], kv[1]]; }));
 
     list.innerHTML = ids
-      .map((id) => {
-        const p = map.get(id);
+      .map(function (id) {
+        var p = map.get(id);
         if (!p) return '';
-        const tags = (p.tags || []).map((t: string) =>
-          `<a href="/tags/${encodeURIComponent(t)}" class="tag">#${t}</a>`
-        ).join('');
-        return `<li>
-          <article class="post-card">
-            <a href="/blog/${p.id}" class="post-card-link">
-              <h3>${escapeHtml(p.title)}</h3>
-              <time>${p.pubDate}</time>
-              <p class="desc">${escapeHtml(p.description || '')}</p>
-            </a>
-            ${tags ? `<div class="tags">${tags}</div>` : ''}
-          </article>
-        </li>`;
+        var tags = (p.tags || []).map(function (t) {
+          return '<a href="/tags/' + encodeURIComponent(t) + '" class="tag">#' + t + '</a>';
+        }).join('');
+        return '<li>' +
+          '<article class="post-card">' +
+            '<a href="/blog/' + p.id + '" class="post-card-link">' +
+              '<h3>' + escapeHtml(p.title) + '</h3>' +
+              '<time>' + p.pubDate + '</time>' +
+              '<p class="desc">' + escapeHtml(p.description || '') + '</p>' +
+            '</a>' +
+            (tags ? '<div class="tags">' + tags + '</div>' : '') +
+          '</article>' +
+        '</li>';
       })
       .join('');
 
-    function escapeHtml(s: string): string {
+    function escapeHtml(s) {
       return s
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
