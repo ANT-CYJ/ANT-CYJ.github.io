@@ -40,7 +40,7 @@ const postMap = new Map(allPosts.map((p) => [p.id, p]));
   pubDate: post.data.pubDate.toISOString().slice(0, 10),
   tags: post.data.tags,
 })) }}>
-  // 把 postMap 注入到客户端(纯 JS,不能有 TypeScript 语法,define:vars 块不过 TS 编译)
+  // 把 postMap 注入到客户端
   window.__POST_MAP__ = postMapData;
 
   (function () {
@@ -48,12 +48,17 @@ const postMap = new Map(allPosts.map((p) => [p.id, p]));
     var empty = document.getElementById('bookmarks-empty');
     if (!list || !empty) return;
 
-    var raw = localStorage.getItem('neo-bookmarks-index');
+    // 直接遍历 localStorage 找所有 neo-bookmark-* = '1' 的键(不依赖 indexKey)
     var ids = [];
     try {
-      ids = raw ? JSON.parse(raw) : [];
+      for (var i = 0; i < localStorage.length; i++) {
+        var k = localStorage.key(i);
+        if (k && k.indexOf('neo-bookmark-') === 0 && localStorage.getItem(k) === '1') {
+          ids.push(k.slice('neo-bookmark-'.length));
+        }
+      }
     } catch (e) {
-      console.error('[bookmarks] failed to parse neo-bookmarks-index', e);
+      console.error('[bookmarks] failed to scan localStorage', e);
     }
 
     if (!ids.length) {
@@ -65,7 +70,11 @@ const postMap = new Map(allPosts.map((p) => [p.id, p]));
     empty.style.display = 'none';
     list.style.display = 'block';
 
-    var map = new Map(window.__POST_MAP__.map(function (kv) { return [kv[0], kv[1]]; }));
+    var map = new Map();
+    var pm = window.__POST_MAP__ || [];
+    for (var i = 0; i < pm.length; i++) {
+      map.set(pm[i].id, pm[i]);
+    }
 
     list.innerHTML = ids
       .map(function (id) {

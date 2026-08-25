@@ -23,40 +23,36 @@ const { postId } = Astro.props;
 </button>
 
 <script>
+  // 极简实现:每个 postId 一个 localStorage 键,值 '1' / '0'
+  // /bookmarks 页面通过遍历所有 neo-bookmark-* 键来列出收藏
   (function () {
-    document.querySelectorAll('.bookmark-btn').forEach((btn) => {
-      const postId = btn.dataset.postId;
-      const stateKey = `neo-bookmark-${postId}`;
-      const indexKey = 'neo-bookmarks-index';
-      const iconEl = btn.querySelector('.bookmark-icon');
-
-      // 读取状态
-      const saved = localStorage.getItem(stateKey) === '1';
+    function read() {
+      var btn = this;
+      var postId = btn.dataset.postId;
+      var key = 'neo-bookmark-' + postId;
+      var icon = btn.querySelector('.bookmark-icon');
+      var saved = localStorage.getItem(key) === '1';
       btn.classList.toggle('active', saved);
-      if (iconEl) iconEl.textContent = saved ? '★' : '☆';
-
-      btn.addEventListener('click', () => {
-        const isActive = btn.classList.toggle('active');
-        if (iconEl) iconEl.textContent = isActive ? '★' : '☆';
-        localStorage.setItem(stateKey, isActive ? '1' : '0');
-
-        // 维护一个收藏索引(用于"我的收藏"页)
-        try {
-          const raw = localStorage.getItem(indexKey);
-          const arr = raw ? JSON.parse(raw) : [];
-          const set = new Set(arr);
-          if (isActive) {
-            set.add(postId);
-          } else {
-            set.delete(postId);
-          }
-          localStorage.setItem(indexKey, JSON.stringify([...set]));
-        } catch (e) {
-          // 暴露错误(诊断用)— /bookmarks 页面靠这个 index 读数据
-          console.error('[bookmark] index update failed for postId=' + postId, e);
-        }
-      });
-    });
+      if (icon) icon.textContent = saved ? '★' : '☆';
+    }
+    function write() {
+      var btn = this;
+      var postId = btn.dataset.postId;
+      var key = 'neo-bookmark-' + postId;
+      var icon = btn.querySelector('.bookmark-icon');
+      var isActive = btn.classList.toggle('active');
+      if (icon) icon.textContent = isActive ? '★' : '☆';
+      try {
+        localStorage.setItem(key, isActive ? '1' : '0');
+      } catch (e) {
+        console.error('[bookmark] setItem failed for ' + key, e);
+      }
+    }
+    var btns = document.querySelectorAll('.bookmark-btn');
+    for (var i = 0; i < btns.length; i++) {
+      read.call(btns[i]);
+      btns[i].addEventListener('click', write);
+    }
   })();
 </script>
 
