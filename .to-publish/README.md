@@ -57,6 +57,15 @@
 
 **这篇是 8/25 最新博客**,跟 Context Engineering / Harness Engineering 完美互链,跟 AI 编程三阶形成系列。**W37 完成度:博客 + 资源池齐备,等 Neo 手动发。**
 
+### ★★★ Kiro AI IDE 全景(2026-08-26 已发博客)
+
+| 平台 | 资源 | 推荐度 | 备注 |
+|---|---|---|---|
+| **B 站专栏** | `bilibili/kiro-ai-ide.md`(6KB) | ⭐⭐⭐ | AWS 规范驱动开发,跟 DeepSeek Harness 国际/国内对位 ⭐ |
+| **微信公众号** | `wechat/kiro-ai-ide.md`(550 字) | ⭐⭐⭐ | 3 步工作流 + 国内限制 + 3 遍运行教训 |
+
+**这篇是 8/26 最新博客**,跟 DeepSeek Harness 形成系列对位 — 显式规范 vs 隐式系统,2026 年 AI 编程两个分叉。
+
 ### ⛔ 跳过
 
 - `welcome.md` — meta 类(重启理由),不适合跨平台
@@ -171,3 +180,11 @@
 - 关联 commit:本 commit
 - **下一步**:等 Neo 手动发 B 站/微信
 - **系列感**:跟 Context Engineering + Harness Engineering 形成"AI 编程三阶"完整闭环(本次新加的"实操"层)
+
+### 2026-08-26 — Kiro AI IDE 全景就绪
+- 🆕 **新发 1 篇博客**:`kiro-ai-ide` 11.5KB(commit `61c4431`)
+- 🆕 **资源池新增 2 篇**:B站长文 `kiro-ai-ide` 6KB + 微信 `kiro-ai-ide` 3KB
+- 累计:博客 11 篇 / B 站资源 9 篇 / 微信资源 8 篇
+- 关联 commit:本 commit
+- **下一步**:等 Neo 手动发 B 站/微信
+- **系列感**:跟 DeepSeek Harness 形成"国际/国内"对位 — 显式规范(Kiro)vs 隐式系统(Harness),2026 AI 编程两个分叉
