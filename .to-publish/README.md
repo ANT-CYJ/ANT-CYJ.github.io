@@ -66,6 +66,15 @@
 
 **这篇是 8/26 最新博客**,跟 DeepSeek Harness 形成系列对位 — 显式规范 vs 隐式系统,2026 年 AI 编程两个分叉。
 
+### ★★★ DeepSeek V4.1 Flash(2026-09-10 已发博客)
+
+| 平台 | 资源 | 推荐度 | 备注 |
+|---|---|---|---|
+| **B 站专栏** | `bilibili/deepseek-v41-flash.md`(5.8KB) | ⭐⭐⭐ | Flash 价位 + 旗舰能力 + V4 Pro 自动切换 ⭐ |
+| **微信公众号** | `wechat/deepseek-v41-flash.md`(2.6KB) | ⭐⭐⭐ | 4 大亮点 + 6 条短板 + 2 种调用模式 |
+
+**这篇是 9/10 今日最新博客**,跟 8/22 发的 DeepSeek Harness 形成"老产品 + 新底层"对位 — V4.1 Flash 标志"模型 + 工具双线竞争"开始。
+
 ### ⛔ 跳过
 
 - `welcome.md` — meta 类(重启理由),不适合跨平台
@@ -188,3 +197,12 @@
 - 关联 commit:本 commit
 - **下一步**:等 Neo 手动发 B 站/微信
 - **系列感**:跟 DeepSeek Harness 形成"国际/国内"对位 — 显式规范(Kiro)vs 隐式系统(Harness),2026 AI 编程两个分叉
+
+### 2026-09-10 — DeepSeek V4.1 Flash 就绪
+- 🆕 **新发 1 篇博客**:`deepseek-v41-flash` 10.2KB(commit `5436d62`)
+- 🆕 **资源池新增 2 篇**:B站长文 `deepseek-v41-flash` 5.8KB + 微信 `deepseek-v41-flash` 2.6KB
+- 累计:博客 12 篇 / B 站资源 10 篇 / 微信资源 9 篇
+- 关联 commit:本 commit
+- **下一步**:等 Neo 手动发 B 站/微信
+- **系列感**:跟 8/22 发的 DeepSeek Harness 形成"老产品 + 新底层模型"对位 — V4.1 Flash 是"模型层降价 + 性能反超"标志
+- **用户反馈修正**:把"偷偷换掉/暗坑"改成"自动切换/最关键的机制",避免读者误解 V4.1 Flash 是降级(实际是降价 + 性能反超)
