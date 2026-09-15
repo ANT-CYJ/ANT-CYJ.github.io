@@ -75,6 +75,15 @@
 
 **这篇是 9/10 今日最新博客**,跟 8/22 发的 DeepSeek Harness 形成"老产品 + 新底层"对位 — V4.1 Flash 标志"模型 + 工具双线竞争"开始。
 
+### ★★★ Agent Skills 入门(2026-09-15 已发博客)
+
+| 平台 | 资源 | 推荐度 | 备注 |
+|---|---|---|---|
+| **B 站专栏** | `bilibili/agent-skills.md`(5.7KB) | ⭐⭐⭐ | Anthropic 3 层渐进式披露 + QWER 哲学 |
+| **微信公众号** | `wechat/agent-skills.md`(2.7KB) | ⭐⭐⭐ | 实战 5 步建 Skill + 给普通人的建议 |
+
+**这篇是 9/15 今日最新博客**,打通 4 篇已发博客(vibe-coding / hermes / harness / context)。**主题:Skill 不是工程师专属,普通人也能用来提效**。
+
 ### ⛔ 跳过
 
 - `welcome.md` — meta 类(重启理由),不适合跨平台
@@ -206,3 +215,12 @@
 - **下一步**:等 Neo 手动发 B 站/微信
 - **系列感**:跟 8/22 发的 DeepSeek Harness 形成"老产品 + 新底层模型"对位 — V4.1 Flash 是"模型层降价 + 性能反超"标志
 - **用户反馈修正**:把"偷偷换掉/暗坑"改成"自动切换/最关键的机制",避免读者误解 V4.1 Flash 是降级(实际是降价 + 性能反超)
+
+### 2026-09-15 — Agent Skills 入门就绪
+- 🆕 **新发 1 篇博客**:`agent-skills` 12.2KB(commit `c31b792`)
+- 🆕 **资源池新增 2 篇**:B站长文 `agent-skills` 5.7KB + 微信 `agent-skills` 2.7KB
+- 累计:博客 13 篇 / B 站资源 11 篇 / 微信资源 10 篇
+- 关联 commit:本 commit
+- **下一步**:等 Neo 手动发 B 站/微信
+- **系列感**:打通 4 篇已发博客(vibe-coding / hermes / harness / context)的"个人技能复用"维度 — Skill 是 Harness 思维的具体落地
+- **定位转变**:从"AI 编程工具评测"扩展到"AI 时代个人生产力" — Skill 不是工程师专属,普通人也能用
