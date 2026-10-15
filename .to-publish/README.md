@@ -259,3 +259,12 @@
 - **跟已发博客互链 6 篇**:ai-models-q3-q4-2026(10/14)/ agent-skills(9/15)/ vibe-coding-learning-roadmap(8/25)/ context-engineering(8/24)/ harness-engineering-1(8/22)/ kiro-ai-ide(8/26)
 - 累计:博客 **16 篇** / B 站资源 11 篇 / 微信资源 10 篇
 - **下一步**:写 FDE 概览(系列第 2/4 篇)
+
+### 2026-10-15 (2) — FDE 概览仅博客(系列第 2/4 篇)
+- 🆕 **新发 1 篇博客**:`fde-overview-front-deploy-engineer` 12.9KB
+- ❌ **跳过跨平台分发**:Neo 10/15 决定 — 行业观察类,跟 OPC 概览同性质,只发博客
+- **引子**:Palantir 避弹衣 + 阿富汗 + 拉登事件(FDE 起源故事)
+- **5 章**:FDE 是什么 / Palantir 起源 / 2026 为什么爆发 / 必备能力 / FDE vs OPC
+- **互链 7 篇**(OPC 概览 + ai-models-q3-q4 / agent-skills / vibe-coding / context-eng / harness-eng-1 / kiro)
+- 累计:博客 **17 篇** / B 站资源 11 篇 / 微信资源 10 篇
+- **下一步**:继续推荐(OPC 实操系列 3/4 / 或扫 vault 找其他高价值笔记)
