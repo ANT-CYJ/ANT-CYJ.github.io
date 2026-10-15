@@ -268,3 +268,38 @@
 - **互链 7 篇**(OPC 概览 + ai-models-q3-q4 / agent-skills / vibe-coding / context-eng / harness-eng-1 / kiro)
 - 累计:博客 **17 篇** / B 站资源 11 篇 / 微信资源 10 篇
 - **下一步**:继续推荐(OPC 实操系列 3/4 / 或扫 vault 找其他高价值笔记)
+
+### 2026-10-15 (3) — OPC 实操系列完成(系列 3/4 篇)
+- 🆕 **新发 1 篇博客**:`opc-practice-guide` 10.8KB
+- ✅ **跨平台资源已就绪**(B 站长文 + 微信短文)— 待 Neo 决定发不发
+- **类型**:工具实操类(MVP 主义 + 拿来主义),按 Neo 10/15 默认原则可跨平台
+- **7 章**:5 步框架(想法→验证→MVP→上线→商业化)+ 工具链 + 3 大风险
+- **互链 8 篇**(OPC 概览 + FDE 概览 + ai-models-q3-q4 / agent-skills / vibe-coding / context-eng / harness-eng-1 / kiro)
+- 累计:博客 **18 篇** / B 站资源 12 篇(新增 1 篇)/ 微信资源 11 篇(新增 1 篇)
+- **下一步**:FDE 实操(系列 4/4 篇)
+
+### 2026-10-15 (4) — FDE 实操系列完成(系列 4/4 篇)
+- 🆕 **新发 1 篇博客**:`fde-practice-guide` 12.1KB
+- ✅ **跨平台资源已就绪**(B 站长文 + 微信短文)— 待 Neo 决定发不发
+- **类型**:工具实操类 + 转岗指南,按 Neo 10/15 默认原则可跨平台
+- **8 章**:3 硬动作 / 一天工作流 / 一周工作流 / 13 项技能栈 / 工具清单 / 6 月路线 / FDE-OPC 连接 / 总结
+- **互链 9 篇**(FDE 概览 + OPC 概览 + OPC 实操 + ai-models-q3-q4 / agent-skills / vibe-coding / context-eng / harness-eng-1 / kiro)
+- 累计:博客 **19 篇** / B 站资源 13 篇(新增 1 篇)/ 微信资源 12 篇(新增 1 篇)
+- **下一步**:Google AI 学习路径(跳系列)
+
+### 2026-10-15 (5) — Google AI 学习路径教程(vault 笔记重写)
+- 🆕 **新发 1 篇博客**:`google-ai-learning-path` 16.5KB
+- ✅ **跨平台资源已就绪**(B 站长文 + 微信短文)— 待 Neo 决定发不发
+- **源素材**:`wiki/google-ai-learning-path.md` (13.5KB / 2026-07-24)
+- **类型**:教程类 + 工具评测类,跨平台分发价值高
+- **6 主体**:产品矩阵 / 8h 5 站路径 / 3 演示炸场点 / 中国用户特别提醒 / 自测清单 / 总结
+- **互链 6 篇**(ai-models-q3-q4 / agent-skills / vibe-coding / kiro / context-eng / harness-eng-1)
+- 累计:博客 **20 篇** / B 站资源 14 篇(新增 1 篇)/ 微信资源 13 篇(新增 1 篇)
+- **下一步**:Neo 决定跨平台分发策略 / 沉淀 OPC + FDE 概念到 KNOWLEDGE-IP / LEARNING-JOURNAL
+
+### 🎉 2026-10-15 里程碑:20 篇博客 live
+- **AI 时代新概念 4 篇系列完结**:OPC 概览 + FDE 概览 + OPC 实操 + FDE 实操
+- **2 篇仅博客**(OPC 概览 + FDE 概览 — 行业观察类)
+- **2 篇可跨平台**(OPC 实操 + FDE 实操 — 工具实操类,资源已就绪)
+- **1 篇教程跳系列**(Google AI 学习路径 — 教程类,资源已就绪)
+- **跨平台资源新增 6 份**(3 B 站长文 + 3 微信短文),等 Neo 手动发布
