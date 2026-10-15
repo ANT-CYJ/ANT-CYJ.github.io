@@ -251,3 +251,11 @@
 - 累计:博客 **15 篇** / B 站资源 11 篇 / 微信资源 10 篇
 - 关联 commit:本 commit
 - **下一步**:收工
+
+### 2026-10-15 — OPC 概览仅博客(系列第 1/4 篇)
+- 🆕 **新发 1 篇博客**:`opc-overview-one-person-company` 12.5KB
+- ❌ **跳过跨平台分发**:Neo 10/15 决定 — 跟 10/14 ai-models-q3-q4-2026 同性质,行业观察类,只发博客
+- **系列背景**:AI 时代新概念 4 篇系列(OPC 概览 + FDE 概览 + OPC 实操 + FDE 实操),FDE 翻译统一为"前线部署工程师"
+- **跟已发博客互链 6 篇**:ai-models-q3-q4-2026(10/14)/ agent-skills(9/15)/ vibe-coding-learning-roadmap(8/25)/ context-engineering(8/24)/ harness-engineering-1(8/22)/ kiro-ai-ide(8/26)
+- 累计:博客 **16 篇** / B 站资源 11 篇 / 微信资源 10 篇
+- **下一步**:写 FDE 概览(系列第 2/4 篇)
